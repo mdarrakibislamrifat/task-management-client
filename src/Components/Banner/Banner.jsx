@@ -16,7 +16,7 @@ const Banner = () => {
           <p className="mb-5">
           Develop a marketing strategy for a new product launch targeting young adults. Create engaging social media content and execute ad campaigns to drive brand awareness and sales.
           </p>
-          <Link><button className="btn btn-primary">Let's Explore</button></Link>
+          <Link to='dashboard'><button className="btn btn-primary">Let's Explore</button></Link>
         </div>
       </div>
     </div>

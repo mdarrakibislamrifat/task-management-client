@@ -79,24 +79,28 @@ const handleGithub=()=>{
     signInWithPopup(auth,githubProvider)
     .then(result=>{
         const loggedUser=result.user
-        console.log(loggedUser)
+        console.log(loggedUser.email)
     })
     .catch(error=>{
         console.log(error)
     })
 }
 
-const handleGoogle=()=>{
-    googleSignIn(provider)
-    .then(result=>{
-        const loggedUser=result.user;
-        console.log(loggedUser)
+const handleGoogle = () => {
+  googleSignIn(provider)
+      .then(result => {
+          // Log the entire result object to inspect its structure
+          console.log(result);
 
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-}
+          // Access user's email if available in the result
+          const loggedUser = result.user?.email; // Using optional chaining to avoid errors if user or email is undefined/null
+          console.log(loggedUser);
+      })
+      .catch(err => {
+          console.log(err);
+      });
+};
+
 
   return (
     <div className="hero min-h-screen py-10">

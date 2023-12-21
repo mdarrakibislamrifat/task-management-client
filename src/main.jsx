@@ -17,14 +17,12 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProviders>
+     <AuthProviders>
     <QueryClientProvider client={queryClient}>
-    
     <HelmetProvider>
       <RouterProvider router={router}></RouterProvider>
       </HelmetProvider>
-    
-    </QueryClientProvider>
+      </QueryClientProvider>
     </AuthProviders>
     
     

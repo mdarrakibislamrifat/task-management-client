@@ -21,10 +21,10 @@ const signIn=(email,password)=>{
     return signInWithEmailAndPassword(auth,email,password)
 }
 
-const googleSignIn=(provider)=>{
-    setLoading(true);
-    return signInWithPopup(auth,provider)
-}
+const googleSignIn = (provider) => {
+  setLoading(true); 
+  return signInWithPopup(auth, provider);
+};
 
 const logOut=()=>{
     setLoading(true);
@@ -34,9 +34,9 @@ const logOut=()=>{
 useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-    //   const userInfo={
-    //     email:currentUser?.email
-    //   }
+      const userInfo={
+        email:currentUser?.email
+      }
     //   if (currentUser) {
     //     axiosPublic
     //       .post('/jwt', userInfo)

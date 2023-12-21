@@ -1,23 +1,20 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, updateProfile } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
 import animationNew from "../../assets/Animation - 1700488396904.json";
-import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
-import UseAxiosPublic from "../../Hooks/useAxiosPublic";
+
 
 
 const Registration = () => {
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [registerError, SetRegisterError] = useState("");
-  const location = useLocation();
   const navigate = useNavigate();
-  const provider = new GoogleAuthProvider();
-  const axiosPublic=UseAxiosPublic();
+
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -38,34 +35,18 @@ const Registration = () => {
     } else {
       createUser(email, password, photo, name)
         .then((result) => {
+            Swal.fire({
+              title: "Successfully Register!",
+                    icon: "success"
+            })
+            navigate('/login')
             e.target.reset();
           updateProfile(result.user, {
             displayName: `${name}`,
             photoURL: `${photo}`,
           })
           .then(()=>{
-            const userInfo={
-              name: name,
-              email:email,
-              photo:photo,
-              
-            }
-            // axiosPublic.post('/users',userInfo)
-            // .then(result=>{
-            //   if (result.data?.insertedId) {
-            //     Swal.fire({
-            //         title: "Successfully Register!",
-            //         icon: "success"
-            //       });
-            //     navigate("/login");
-            //   }
-            //   else{
-            //     console.log('error')
-            //     navigate(location?.state ? location.state : "/")
-            //   }
 
-            // })
-            
           })
           
         })
