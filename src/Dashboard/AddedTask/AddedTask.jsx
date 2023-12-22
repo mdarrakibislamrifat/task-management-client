@@ -1,22 +1,22 @@
-
-
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../Hooks/useAxiosPublic";
-import { FaTrashAlt } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
-const ToDo = () => {
-const axiosPublic=UseAxiosPublic()
-
+const AddedTask = () => {
+    const axiosPublic=UseAxiosPublic()
+    const {user}=useContext(AuthContext)
     const { data: tasks = [] ,refetch} = useQuery({
         queryKey: ["tasks"],
         queryFn: async () => {
-          const res = await axiosPublic.get(`/getTask`);
+          const res = await axiosPublic.get(`/getTask/${user.email}`);
           return res.data;
         }
       });
-
 
       const handleDeleteTask=task=>{
         Swal.fire({
@@ -44,8 +44,8 @@ const axiosPublic=UseAxiosPublic()
             }
           });
     }
-      
-      return (
+
+    return (
         <div>
         <div className="flex justify-evenly my-4 ">
           <h2 className="text-3xl text-blue-500 font-semibold">All Tasks</h2>
@@ -80,6 +80,11 @@ const axiosPublic=UseAxiosPublic()
                     >
                       <FaTrashAlt className="text-red-600"></FaTrashAlt>
                     </button>
+                    <Link to={`/dashboard/update/${task._id}`}><button
+                      className="btn btn-ghost btn-lg"
+                    >
+                      <FaEdit className="text-green-600"></FaEdit>
+                    </button></Link>
                   </tr>
                 ))}
               </tbody>
@@ -90,4 +95,4 @@ const axiosPublic=UseAxiosPublic()
     );
 };
 
-export default ToDo;
+export default AddedTask;

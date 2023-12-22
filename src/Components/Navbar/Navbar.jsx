@@ -24,7 +24,7 @@ const Navbar = () => {
       </li>
     <li>
         <NavLink
-          to="/"
+          to="/dashboard/ToDo"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
@@ -33,7 +33,7 @@ const Navbar = () => {
               : ""
           }
         >
-          Home
+          All Tasks
         </NavLink>
       </li>
     <li>
@@ -47,7 +47,7 @@ const Navbar = () => {
               : ""
           }
         >
-          Home
+          Notification
         </NavLink>
       </li>
     <li>

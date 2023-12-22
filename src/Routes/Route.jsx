@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddTask from "../Dashboard/AddTask/AddTask";
 import ToDo from "../Dashboard/ToDo/ToDo";
 import UserHome from "../Dashboard/UserHome/UserHome";
+import AddedTask from "../Dashboard/AddedTask/AddedTask";
+import UpdateTask from "../Dashboard/UpdateTask/UpdateTask";
 
 
 
@@ -34,6 +36,10 @@ import UserHome from "../Dashboard/UserHome/UserHome";
             path:'userHome',
             element:<UserHome></UserHome>
            },
+           {
+            path:'addedTask',
+            element:<AddedTask></AddedTask>
+           },
             {
               path:'addTask',
               element:<AddTask></AddTask>
@@ -41,7 +47,12 @@ import UserHome from "../Dashboard/UserHome/UserHome";
             {
               path:'ToDo',
               element:<ToDo></ToDo>
-            }
+            },
+            {
+              path:'update/:id',
+              element:<UpdateTask></UpdateTask>,
+              loader:({params})=>fetch(`http://localhost:5000/getTask/new/${params.id}`)
+            },
           ]
         },
         {

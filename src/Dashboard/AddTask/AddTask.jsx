@@ -18,7 +18,7 @@ const AddTask = () => {
         date:data.date,
         description: data.description,
         email:user?.email,
-        status:'pending'
+        status:'ToDo'
       };
       const res = await axiosPublic.post("/task", taskItem);
       if (res.data.insertedId) {

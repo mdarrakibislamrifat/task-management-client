@@ -34,6 +34,11 @@ const Dashboard = () => {
                     <FaHome className="text-xl"></FaHome>My Home
                   </NavLink>
                 </li>
+              <li>
+                  <NavLink to="/dashboard/addedTask">
+                    <FaHome className="text-xl"></FaHome>My Added Tasks
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink to="/dashboard/addTask">
                     <FaFileExport className="text-xl"></FaFileExport>Add Task
@@ -42,10 +47,10 @@ const Dashboard = () => {
 
                 <li>
                   <NavLink to="/dashboard/ToDo">
-                    <FaTasks className="text-xl"></FaTasks>To Do
+                    <FaTasks className="text-xl"></FaTasks>All Tasks
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/dashboard/onGoing">
                     <FaRunning className="text-xl"></FaRunning>OnGoing
                   </NavLink>
@@ -54,7 +59,7 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/completed">
                     <FaRegCheckCircle className="text-xl"></FaRegCheckCircle>Completed
                   </NavLink>
-                </li>
+                </li> */}
 
               </>
             ) : (
